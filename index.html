@@ -14,15 +14,19 @@
         
         header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 20px;background:linear-gradient(135deg,#0d1117,#161b22)}
         
-        /* خيار 1: هالة ذهبية/زرقاء خفيفة تدور ببطء جدًا */
-        .profile{
-            position:relative;width:250px;height:250px;border-radius:50%;object-fit:cover;
-            border:8px solid var(--accent);box-shadow:0 0 80px rgba(88,166,255,0.4);
+        /* إطار واحد فقط + هالة خيار 1 */
+        .profile-container{
+            position:relative;width:250px;height:250px;border-radius:50%;
         }
-        .profile::before{
+        .profile{
+            width:100%;height:100%;border-radius:50%;object-fit:cover;
+            border:8px solid var(--accent);box-shadow:0 0 80px rgba(88,166,255,0.4);
+            position:relative;z-index:2;
+        }
+        .profile-container::before{
             content:'';position:absolute;top:-20px;left:-20px;right:-20px;bottom:-20px;
             border-radius:50%;background:conic-gradient(transparent,var(--accent),var(--gold),var(--accent),transparent);
-            animation:glowRotate 20s linear infinite;opacity:0.5;z-index:-1;
+            animation:glowRotate 22s linear infinite;opacity:0.5;z-index:1;
         }
         @keyframes glowRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
@@ -46,36 +50,20 @@
         .achievement{margin:20px 0;font-size:1.2rem;padding:18px 0 18px 15px;border-left:5px solid var(--accent);background:rgba(88,166,255,0.05);border-radius:8px}
         .achievement i{color:var(--accent);margin-right:14px}
 
-        /* زر واتساب مع حركة لمرة واحدة بعد 60 ثانية */
-        .whatsapp-float{
-            position:fixed;bottom:30px;right:30px;width:65px;height:65px;background:#25D366;color:#fff;
-            border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.4rem;
-            box-shadow:0 10px 30px rgba(37,211,102,0.5);z-index:1000;opacity:0;transform:scale(0);
-            transition:all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-        .whatsapp-float.show{
-            opacity:1;transform:scale(1);
-            animation:bounce 1s ease-out;
-        }
-        @keyframes bounce{
-            0%{transform:scale(0.3) translateY(100px)}
-            60%{transform:scale(1.2)}
-            80%{transform:scale(0.9)}
-            100%{transform:scale(1)}
-        }
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:65px;height:65px;background:#25D366;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.4rem;box-shadow:0 10px 30px rgba(37,211,102,0.5);z-index:1000;opacity:0;transform:scale(0);transition:all 0.8s cubic-bezier(0.68,-0.55,0.265,1.55)}
+        .whatsapp-float.show{opacity:1;transform:scale(1);animation:bounce 1s ease-out}
+        @keyframes bounce{0%{transform:scale(0.3) translateY(100px)}60%{transform:scale(1.2)}80%{transform:scale(0.9)}100%{transform:scale(1)}}
 
         footer{padding:80px 20px;text-align:center;color:var(--gray);font-size:1.15rem}
-        @media(max-width:768px){
-            h1{font-size:3.3rem}.tagline{font-size:1.8rem}.profile{width:190px;height:190px}
-            .btn-group{flex-direction:column}.btn{min-width:auto}
-        }
+        @media(max-width:768px){h1{font-size:3.3rem}.tagline{font-size:1.8rem}.profile-container{width:190px;height:190px}.btn-group{flex-direction:column}.btn{min-width:auto}}
     </style>
 </head>
 <body>
 
 <header>
-    <div class="profile"></div>
-    <img src="profile.jpeg" alt="Majd Salman" class="profile">
+    <div class="profile-container">
+        <img src="profile.jpeg" alt="Majd Salman" class="profile">
+    </div>
     <h1>Majd Salman</h1>
     <div class="tagline">AI Data Transformation Consultant</div>
     <div class="location">Dubai, United Arab Emirates</div>
@@ -97,6 +85,7 @@
 </header>
 
 <div id="details" class="hidden-content">
+
     <div class="section">
         <h2>Professional Summary</h2>
         <p style="text-align:center;font-size:1.25rem">AI-driven Data Transformation Consultant with 12+ years of experience in banking technology, data analytics, BI reporting, automation, API integrations, and digital transformation. Skilled in Power BI, Python, SQL, and data modeling, with a proven ability to convert legacy banking operations into data-centric, AI-enabled ecosystems.</p>
@@ -120,25 +109,26 @@
         <h2>Technical Skills</h2>
         <div class="achievement"><i class="fas fa-check-circle"></i> Python, SQL, Power BI, Machine Learning</div>
         <div class="achievement"><i class="fas fa-check-circle"></i> REST APIs, Postman, Git, JIRA</div>
-        <div class="achievement"><i class="fas fa-check-circle"></i> VMware, Hyper-V, Linux & Windows Server</div>
+        <div class="achievement"><i class="fas fa-check-circle"></i> VMware, Hyper-V, Linux, Windows Server</div>
         <div class="achievement"><i class="fas fa-check-circle"></i> SIEM, Identity & Access Management</div>
         <div class="achievement"><i class="fas fa-check-circle"></i> Flutter, JavaScript, Virtualization</div>
     </div>
 
     <div class="section">
         <h2>Professional Experience & Key Achievements – Official Recognition</h2>
-        <div class="achievement"><i class="fas fa-trophy"></i> Developed enterprise Power BI dashboards for executive reporting and risk insights</div>
-        <div class="achievement"><i class="fas fa-trophy"></i> Built analytics data models and ETL pipelines improving reporting accuracy by 45%</div>
-        <div class="achievement"><i class="fas fa-trophy"></i> Implemented automated AI-assisted data workflows and anomaly detection models</div>
-        <div class="achievement"><i class="fas fa-trophy"></i> Led modernization of digital banking channels including mobile and internet banking</div>
-        <div class="achievement"><i class="fas fa-trophy"></i> Directed RTGS national implementation with the Central Bank</div>
-        <div class="achievement"><i class="fas fa-trophy"></i> Implemented ACH payment services improving system scalability and reliability</div>
-        <div class="achievement"><i class="fas fa-trophy"></i> Delivered national Asset Reservation & Freeze System for government entities</div>
-        <div class="achievement"><i class="fas fa-trophy"></i> Achieved zero cybersecurity breaches since 2019 across production and DR sites</div>
-        <div class="achievement"><i class="fas fa-trophy"></i> Deployed ISO 27001 ISMS and ISO 22301 aligned BCP/DR with RTO < 4 hours</div>
-        <div class="achievement"><i class="fas fa-trophy"></i> Designed SDDC infrastructure reducing operational cost by 60% over five years</div>
-        <div class="achievement"><i class="fas fa-trophy"></i> Managed infrastructure, DevOps, cybersecurity, and application support teams</div>
+        <div class="achievement"><i class="fas fa-trophy"></i> Developed enterprise Power BI dashboards for executive reporting and risk insights.</div>
+        <div class="achievement"><i class="fas fa-trophy"></i> Built analytics data models and ETL pipelines improving reporting accuracy by 45%.</div>
+        <div class="achievement"><i class="fas fa-trophy"></i> Implemented automated AI-assisted data workflows and anomaly detection models.</div>
+        <div class="achievement"><i class="fas fa-trophy"></i> Led modernization of digital banking channels including mobile and internet banking.</div>
+        <div class="achievement"><i class="fas fa-trophy"></i> Directed RTGS national implementation with the Central Bank.</div>
+        <div class="achievement"><i class="fas fa-trophy"></i> Implemented ACH payment services improving system scalability and reliability.</div>
+        <div class="achievement"><i class="fas fa-trophy"></i> Delivered national Asset Reservation & Freeze System for government entities.</div>
+        <div class="achievement"><i class="fas fa-trophy"></i> Achieved zero cybersecurity breaches since 2019 across production and DR sites.</div>
+        <div class="achievement"><i class="fas fa-trophy"></i> Deployed ISO 27001 ISMS and ISO 22301 aligned BCP/DR with RTO < 4 hours.</div>
+        <div class="achievement"><i class="fas fa-trophy"></i> Designed SDDC infrastructure reducing operational cost by 60% over five years.</div>
+        <div class="achievement"><i class="fas fa-trophy"></i> Managed infrastructure, DevOps, cybersecurity, and application support teams.</div>
     </div>
+
 </div>
 
 <a href="https://wa.me/971586772972" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -146,7 +136,6 @@
 <footer>© 2025 Majd Salman – Available immediately for senior roles in UAE • Qatar • KSA</footer>
 
 <script>
-    // تفعيل حركة الواتساب بعد 60 ثانية لمرة واحدة فقط
     setTimeout(() => {
         document.querySelector('.whatsapp-float').classList.add('show');
     }, 60000);

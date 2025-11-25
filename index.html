@@ -6,87 +6,76 @@
     <meta name="description" content="Majd Salman - AI Data Transformation Consultant | 12+ Years Banking Technology | Power BI, Python, ISO 27001 | Dubai, UAE">
     <title>Majd Salman | AI Data Transformation Consultant</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <!-- فونت Inter الاحترافي -->
     <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
     <style>
         :root{--bg:#0d1117;--card:#161b22;--accent:#58a6ff;--gold:#ffd700;--text:#f0f6fc;--gray:#8b949e}
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Inter', 'Segoe UI', sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+        body{font-family:'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
         
         header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 20px;background:linear-gradient(135deg,#0d1117,#161b22)}
         
-        /* حركة خفيفة جدًا حول الصورة */
-        .profile-container{
-            position:relative;display:inline-block;
-        }
+        /* خيار 1: هالة ذهبية/زرقاء خفيفة تدور ببطء جدًا */
         .profile{
-            width:240px;height:240px;border-radius:50%;border:7px solid var(--accent);
-            box-shadow:0 0 90px rgba(88,166,255,0.5);
-            animation:float 6s ease-in-out infinite;
+            position:relative;width:250px;height:250px;border-radius:50%;object-fit:cover;
+            border:8px solid var(--accent);box-shadow:0 0 80px rgba(88,166,255,0.4);
         }
-        .profile::after{
-            content:'';position:absolute;top:-15px;left:-15px;right:-15px;bottom:-15px;
-            border:3px solid transparent;border-radius:50%;
-            background:linear-gradient(45deg,transparent,var(--accent),transparent) border-box;
-            -webkit-mask:linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite:xor;mask-composite:exclude;
-            animation:glow 4s linear infinite;
+        .profile::before{
+            content:'';position:absolute;top:-20px;left:-20px;right:-20px;bottom:-20px;
+            border-radius:50%;background:conic-gradient(transparent,var(--accent),var(--gold),var(--accent),transparent);
+            animation:glowRotate 20s linear infinite;opacity:0.5;z-index:-1;
         }
-        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
-        @keyframes glow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        @keyframes glowRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
-        h1{font-size:4.8rem;color:#fff;font-weight:900;margin:15px 0;letter-spacing:-1px}
+        h1{font-size:4.8rem;color:#fff;font-weight:900;margin:20px 0;letter-spacing:-1px}
         .tagline{font-size:2.3rem;color:var(--gold);margin:15px 0;font-weight:700}
         .location{font-size:1.5rem;color:var(--gray);margin-bottom:40px}
 
-        .contact-icons a{
-            display:inline-flex;align-items:center;justify-content:center;width:70px;height:70px;margin:0 18px;
-            background:var(--card);border:2px solid var(--accent);border-radius:50%;color:var(--accent);font-size:2.2rem;
-            transition:.4s;box-shadow:0 10px 30px rgba(0,0,0,0.5)
-        }
+        .contact-icons a{display:inline-flex;align-items:center;justify-content:center;width:70px;height:70px;margin:0 18px;background:var(--card);border:2px solid var(--accent);border-radius:50%;color:var(--accent);font-size:2.2rem;transition:.4s}
         .contact-icons a:hover{background:var(--accent);color:#000;transform:translateY(-10px)}
 
-        /* أزرار CV + Certificate جنب بعض تمامًا */
-        .btn-group{
-            display:flex;gap:20px;margin:50px 0;flex-wrap:wrap;justify-content:center;
-        }
-        .btn{
-            background:var(--accent);color:#000;padding:18px 50px;border-radius:60px;
-            font-weight:700;font-size:1.3rem;flex:1;max-width:360px;min-width:300px;
-            transition:.4s;box-shadow:0 12px 40px rgba(88,166,255,0.4);text-decoration:none;text-align:center
-        }
-        .btn:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(88,166,255,0.5)}
+        .btn-group{display:flex;gap:25px;margin:50px 0;flex-wrap:wrap;justify-content:center}
+        .btn{background:var(--accent);color:#000;padding:18px 50px;border-radius:60px;font-weight:700;font-size:1.3rem;flex:1;max-width:360px;min-width:300px;transition:.4s;box-shadow:0 12px 40px rgba(88,166,255,0.4);text-decoration:none;text-align:center}
+        .btn:hover{transform:translateY(-6px)}
 
-        .expand-btn{
-            background:transparent;border:3px solid var(--accent);color:var(--accent);margin-top:60px
-        }
+        .expand-btn{background:transparent;border:3px solid var(--accent);color:var(--accent);margin-top:60px}
         .expand-btn:hover{background:var(--accent);color:#000}
 
         .hidden-content{display:none;background:var(--card);padding:80px 20px;margin-top:-100px}
         .section{max-width:1100px;margin:50px auto;padding:40px;background:rgba(22,27,34,0.95);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
         h2{font-size:2.5rem;color:var(--accent);margin-bottom:35px;text-align:center;font-weight:700}
-        .achievement{margin:20px 0;font-size:1.2rem;padding-left:10px;border-left:5px solid var(--accent);padding:18px;background:rgba(88,166,255,0.05);border-radius:8px}
+        .achievement{margin:20px 0;font-size:1.2rem;padding:18px 0 18px 15px;border-left:5px solid var(--accent);background:rgba(88,166,255,0.05);border-radius:8px}
         .achievement i{color:var(--accent);margin-right:14px}
 
-        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:65px;height:65px;background:#25D366;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.4rem;box-shadow:0 10px 30px rgba(37,211,102,0.5);z-index:1000}
+        /* زر واتساب مع حركة لمرة واحدة بعد 60 ثانية */
+        .whatsapp-float{
+            position:fixed;bottom:30px;right:30px;width:65px;height:65px;background:#25D366;color:#fff;
+            border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.4rem;
+            box-shadow:0 10px 30px rgba(37,211,102,0.5);z-index:1000;opacity:0;transform:scale(0);
+            transition:all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .whatsapp-float.show{
+            opacity:1;transform:scale(1);
+            animation:bounce 1s ease-out;
+        }
+        @keyframes bounce{
+            0%{transform:scale(0.3) translateY(100px)}
+            60%{transform:scale(1.2)}
+            80%{transform:scale(0.9)}
+            100%{transform:scale(1)}
+        }
 
         footer{padding:80px 20px;text-align:center;color:var(--gray);font-size:1.15rem}
-
         @media(max-width:768px){
-            h1{font-size:3.3rem}
-            .tagline{font-size:1.8rem}
-            .profile{width:180px;height:180px}
-            .btn-group{flex-direction:column}
-            .btn{min-width:auto}
+            h1{font-size:3.3rem}.tagline{font-size:1.8rem}.profile{width:190px;height:190px}
+            .btn-group{flex-direction:column}.btn{min-width:auto}
         }
     </style>
 </head>
 <body>
 
-<header id="home">
-    <div class="profile-container">
-        <img src="profile.jpeg" alt="Majd Salman" class="profile">
-    </div>
+<header>
+    <div class="profile"></div>
+    <img src="profile.jpeg" alt="Majd Salman" class="profile">
     <h1>Majd Salman</h1>
     <div class="tagline">AI Data Transformation Consultant</div>
     <div class="location">Dubai, United Arab Emirates</div>
@@ -137,7 +126,7 @@
     </div>
 
     <div class="section">
-        <h2>Key Achievements – Official Recognition</h2>
+        <h2>Professional Experience & Key Achievements – Official Recognition</h2>
         <div class="achievement"><i class="fas fa-trophy"></i> Developed enterprise Power BI dashboards for executive reporting and risk insights</div>
         <div class="achievement"><i class="fas fa-trophy"></i> Built analytics data models and ETL pipelines improving reporting accuracy by 45%</div>
         <div class="achievement"><i class="fas fa-trophy"></i> Implemented automated AI-assisted data workflows and anomaly detection models</div>
@@ -154,7 +143,14 @@
 
 <a href="https://wa.me/971586772972" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-<footer>© 2025 Majd Salman – Available immediately for senior AI & Digital Transformation roles in UAE • Qatar • KSA</footer>
+<footer>© 2025 Majd Salman – Available immediately for senior roles in UAE • Qatar • KSA</footer>
+
+<script>
+    // تفعيل حركة الواتساب بعد 60 ثانية لمرة واحدة فقط
+    setTimeout(() => {
+        document.querySelector('.whatsapp-float').classList.add('show');
+    }, 60000);
+</script>
 
 </body>
 </html>
